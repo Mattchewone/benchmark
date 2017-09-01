@@ -34,7 +34,7 @@ module.exports = {
     get: [],
     create: [
       context => {
-        console.log('in here')
+        console.timeEnd('service-1')
       }
     ],
     update: [],
