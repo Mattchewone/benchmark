@@ -5,37 +5,24 @@
 # Results
 Running some simple tests within postman to send bulk data to the services.
 
-service-1 = `feathers-mongoose`\
-service-2 = `feathers-mongoose-advanced`
-
-#### 1000 records (10 validation errors)
-```
-service-1: 1402.926ms (first)
-service-1: 735.441ms (second)
-service-1: 1019.915ms (third)
-avg: 1052.760ms
-```
----
-```
-service-2: 131.716ms (first)
-service-2: 248.894ms (second)
-service-2: 560.430ms (third)
-avg: 313.68ms
-```
-
 #### 5000 records (50 validation errors)
 ```
-service-1: 2839.131ms (first)
-service-1: 3575.133ms (second)
-service-1: 3303.907ms (third)
-avg: 3239.390ms
-```
------
-```
-service-2: 814.402ms (first)
-service-2: 619.735ms (second)
-service-2: 501.041ms (third)
-avg: 645.059ms
+    ✓ Inserting 5000 Records with feathers-mongoose (3683ms)
+      3682.463ms
+    ✓ Inserting 5000 Records with feathers-mongoose-advanced (2082ms)
+      2081.249ms
+    ✓ Inserting 5000 Records with feathers-mongoose (2595ms)
+      2594.169ms
+    ✓ Inserting 5000 Records with feathers-mongoose-advanced (1486ms)
+      1485.792ms
+    ✓ Inserting 5000 Records with feathers-mongoose (2477ms)
+      2477.016ms
+    ✓ Inserting 5000 Records with feathers-mongoose-advanced (1255ms)
+      1254.601ms
+    ✓ Inserting 5000 Records with feathers-mongoose (2475ms)
+      2475.524ms
+    ✓ Inserting 5000 Records with feathers-mongoose-advanced (1101ms)
+      1100.355ms
 ```
 ## Getting Started
 

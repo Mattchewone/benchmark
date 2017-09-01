@@ -31,7 +31,7 @@ describe('Feathers application tests', () => {
             console.log(`        ${diff}ms`)
           }, 1)
         })
-    })
+    }).timeout(10000)
 
     it('Inserting 5000 Records with feathers-mongoose-advanced', () => {
       const start = performance()
@@ -42,7 +42,7 @@ describe('Feathers application tests', () => {
             console.log(`        ${diff}ms`)
           }, 1)
         })
-    })
+    }).timeout(10000)
 
     it('Inserting 5000 Records with feathers-mongoose', () => {
       const start = performance()
@@ -53,7 +53,7 @@ describe('Feathers application tests', () => {
             console.log(`        ${diff}ms`)
           }, 1)
         })
-    })
+    }).timeout(10000)
 
     it('Inserting 5000 Records with feathers-mongoose-advanced', () => {
       const start = performance()
@@ -64,7 +64,7 @@ describe('Feathers application tests', () => {
             console.log(`        ${diff}ms`)
           }, 1)
         })
-    })
+    }).timeout(10000)
 
     it('Inserting 5000 Records with feathers-mongoose', () => {
       const start = performance()
@@ -75,7 +75,7 @@ describe('Feathers application tests', () => {
             console.log(`        ${diff}ms`)
           }, 1)
         })
-    })
+    }).timeout(10000)
 
     it('Inserting 5000 Records with feathers-mongoose-advanced', () => {
       const start = performance()
@@ -86,6 +86,28 @@ describe('Feathers application tests', () => {
             console.log(`        ${diff}ms`)
           }, 1)
         })
-    })
+    }).timeout(10000)
+
+    it('Inserting 5000 Records with feathers-mongoose', () => {
+      const start = performance()
+      return service1.create(data)
+        .catch(error => {
+          const diff = (performance() - start).toFixed(3)
+          setTimeout(function () {
+            console.log(`        ${diff}ms`)
+          }, 1)
+        })
+    }).timeout(10000)
+
+    it('Inserting 5000 Records with feathers-mongoose-advanced', () => {
+      const start = performance()
+      return service2.create(data)
+        .then(error => {
+          const diff = (performance() - start).toFixed(3)
+          setTimeout(function () {
+            console.log(`        ${diff}ms`)
+          }, 1)
+        })
+    }).timeout(10000)
   })
 })
