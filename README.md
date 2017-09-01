@@ -1,11 +1,42 @@
-# benchmark
+# Benchmark
 
-> API Benchmark
+> Benchmark the performace between `feathers-mongoose` bulk create and `feathers-mongoose-advanced` bulk create. `feathers-mongoose-advanced` will push all validation errors and write errors into `params.errors` so that they can be pulled out in an `after` hook and dealt with. Currently `feathers-mongoose` will go to `error` hooks as an error bubbles up from validation/write errors.
 
-## About
+# Results
+Running some simple tests within postman to send bulk data to the services.
 
-This project uses [Feathers](http://feathersjs.com). An open source web framework for building modern real-time applications.
+service-1 = `feathers-mongoose`\
+service-2 = `feathers-mongoose-advanced`
 
+#### 1000 records (10 validation errors)
+```
+service-1: 1402.926ms (first)
+service-1: 735.441ms (second)
+service-1: 1019.915ms (third)
+avg: 1052.760ms
+```
+---
+```
+service-2: 131.716ms (first)
+service-2: 248.894ms (second)
+service-2: 560.430ms (third)
+avg: 313.68ms
+```
+
+#### 5000 records (50 validation errors)
+```
+service-1: 2839.131ms (first)
+service-1: 3575.133ms (second)
+service-1: 3303.907ms (third)
+avg: 3239.390ms
+```
+-----
+```
+service-2: 814.402ms (first)
+service-2: 619.735ms (second)
+service-2: 501.041ms (third)
+avg: 645.059ms
+```
 ## Getting Started
 
 Getting up and running is as easy as 1, 2, 3.
@@ -22,36 +53,3 @@ Getting up and running is as easy as 1, 2, 3.
     ```
     npm start
     ```
-
-## Testing
-
-Simply run `npm test` and all your tests in the `test/` directory will be run.
-
-## Scaffolding
-
-Feathers has a powerful command line interface. Here are a few things it can do:
-
-```
-$ npm install -g feathers-cli             # Install Feathers CLI
-
-$ feathers generate service               # Generate a new Service
-$ feathers generate hook                  # Generate a new Hook
-$ feathers generate model                 # Generate a new Model
-$ feathers help                           # Show all commands
-```
-
-## Help
-
-For more information on all the things you can do with Feathers visit [docs.feathersjs.com](http://docs.feathersjs.com).
-
-## Changelog
-
-__0.1.0__
-
-- Initial release
-
-## License
-
-Copyright (c) 2016
-
-Licensed under the [MIT license](LICENSE).
