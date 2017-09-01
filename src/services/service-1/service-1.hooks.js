@@ -6,7 +6,7 @@ module.exports = {
     get: [],
     create: [
       context => {
-        console.time('service-1')
+        // console.time('service-1')
       }
     ],
     update: [],
@@ -20,7 +20,7 @@ module.exports = {
     get: [],
     create: [
       context => {
-        console.timeEnd('service-1')
+        // console.timeEnd('service-1')
       }
     ],
     update: [],
@@ -34,7 +34,7 @@ module.exports = {
     get: [],
     create: [
       context => {
-        console.timeEnd('service-1')
+        // console.timeEnd('service-1')
       }
     ],
     update: [],

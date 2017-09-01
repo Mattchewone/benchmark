@@ -7,7 +7,7 @@ module.exports = {
     get: [],
     create: [
       context => {
-        console.time('service-2')
+        // console.time('service-2')
       }
     ],
     update: [],
@@ -21,13 +21,13 @@ module.exports = {
     get: [],
     create: [
       context => {
-        console.timeEnd('service-2')
+        // console.timeEnd('service-2')
       },
       context => {
-        iff(
-          context.params.errors,
-          console.log(context.params.errors)
-        )
+        context.result = {
+          data: context.result,
+          errors: context.params.errors
+        }
       }
     ],
     update: [],

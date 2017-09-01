@@ -1,6 +1,10 @@
 const assert = require('assert')
-const rp = require('request-promise')
+const performance = require('performance-now')
 const app = require('../src/app')
+
+const service1 = app.service('service-1')
+const service2 = app.service('service-2')
+const data = require('../dataset.json')
 
 describe('Feathers application tests', () => {
   before(function (done) {
@@ -12,35 +16,76 @@ describe('Feathers application tests', () => {
     this.server.close(done)
   })
 
-  it('starts and shows the index page', () => {
-    return rp('http://localhost:3030').then(body =>
-      assert.ok(body.indexOf('<html>') !== -1)
-    )
+  beforeEach(function () {
+    return service1.remove(null, {})
+      .then(() => service2.remove(null, {}))
   })
 
-  describe('404', function () {
-    it('shows a 404 HTML page', () => {
-      return rp({
-        url: 'http://localhost:3030/path/to/nowhere',
-        headers: {
-          'Accept': 'text/html'
-        }
-      }).catch(res => {
-        assert.equal(res.statusCode, 404)
-        assert.ok(res.error.indexOf('<html>') !== -1)
-      })
+  describe('Benchmarks', function () {
+    it('Inserting 5000 Records with feathers-mongoose', () => {
+      const start = performance()
+      return service1.create(data)
+        .catch(error => {
+          const diff = (performance() - start).toFixed(3)
+          setTimeout(function () {
+            console.log(`        ${diff}ms`)
+          }, 1)
+        })
     })
 
-    it('shows a 404 JSON error without stack trace', () => {
-      return rp({
-        url: 'http://localhost:3030/path/to/nowhere',
-        json: true
-      }).catch(res => {
-        assert.equal(res.statusCode, 404)
-        assert.equal(res.error.code, 404)
-        assert.equal(res.error.message, 'Page not found')
-        assert.equal(res.error.name, 'NotFound')
-      })
+    it('Inserting 5000 Records with feathers-mongoose-advanced', () => {
+      const start = performance()
+      return service2.create(data)
+        .then(error => {
+          const diff = (performance() - start).toFixed(3)
+          setTimeout(function () {
+            console.log(`        ${diff}ms`)
+          }, 1)
+        })
+    })
+
+    it('Inserting 5000 Records with feathers-mongoose', () => {
+      const start = performance()
+      return service1.create(data)
+        .catch(error => {
+          const diff = (performance() - start).toFixed(3)
+          setTimeout(function () {
+            console.log(`        ${diff}ms`)
+          }, 1)
+        })
+    })
+
+    it('Inserting 5000 Records with feathers-mongoose-advanced', () => {
+      const start = performance()
+      return service2.create(data)
+        .then(error => {
+          const diff = (performance() - start).toFixed(3)
+          setTimeout(function () {
+            console.log(`        ${diff}ms`)
+          }, 1)
+        })
+    })
+
+    it('Inserting 5000 Records with feathers-mongoose', () => {
+      const start = performance()
+      return service1.create(data)
+        .catch(error => {
+          const diff = (performance() - start).toFixed(3)
+          setTimeout(function () {
+            console.log(`        ${diff}ms`)
+          }, 1)
+        })
+    })
+
+    it('Inserting 5000 Records with feathers-mongoose-advanced', () => {
+      const start = performance()
+      return service2.create(data)
+        .then(error => {
+          const diff = (performance() - start).toFixed(3)
+          setTimeout(function () {
+            console.log(`        ${diff}ms`)
+          }, 1)
+        })
     })
   })
 })
