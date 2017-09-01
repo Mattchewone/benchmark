@@ -4,7 +4,11 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [],
+    create: [
+      context => {
+        console.time('service-1')
+      }
+    ],
     update: [],
     patch: [],
     remove: []
@@ -14,7 +18,11 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [],
+    create: [
+      context => {
+        console.timeEnd('service-1')
+      }
+    ],
     update: [],
     patch: [],
     remove: []
@@ -24,7 +32,11 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [],
+    create: [
+      context => {
+        console.log('in here')
+      }
+    ],
     update: [],
     patch: [],
     remove: []

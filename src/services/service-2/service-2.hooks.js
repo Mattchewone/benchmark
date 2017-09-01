@@ -1,10 +1,15 @@
+const { iff } = require('feathers-hooks-common')
 
 module.exports = {
   before: {
     all: [],
     find: [],
     get: [],
-    create: [],
+    create: [
+      context => {
+        console.time('service-2')
+      }
+    ],
     update: [],
     patch: [],
     remove: []
@@ -14,7 +19,17 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [],
+    create: [
+      context => {
+        console.timeEnd('service-2')
+      },
+      context => {
+        iff(
+          context.params.errors,
+          console.log(context.params.errors)
+        )
+      }
+    ],
     update: [],
     patch: [],
     remove: []
